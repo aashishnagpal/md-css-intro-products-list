@@ -1,3 +1,3 @@
-# md-css-intro-products-list
+# md-products
 
-This repository contains all the product listing for the CSS Intro chapter on Study.MD
+This repository contains the products page for Web Fundamentals on Study.MD
