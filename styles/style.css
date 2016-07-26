@@ -399,7 +399,7 @@ div.cart-items div.row-item div.cart-price-offer-container p:nth-child(2) {
 }
 
 div.cart-items div.row-item div.cart-price-offer-container p:nth-child(2):before {
-  content: "MSRP: "
+  content: "MSRP: $"
 }
 
 div.cart-items div.row-item div.cart-price-offer-container p:nth-child(3) {
@@ -408,7 +408,7 @@ div.cart-items div.row-item div.cart-price-offer-container p:nth-child(3) {
 }
 
 div.cart-items div.row-item div.cart-price-offer-container p:nth-child(3):before {
-  content: "Savings: "
+  content: "Savings: $"
 }
 
 section#cart div.cart-items div.table-footer div.promo-code-text {
