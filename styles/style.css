@@ -96,6 +96,11 @@ div#search #submit-search:focus {
   outline: none;
 }
 
+button,
+input[type="button"] {
+  cursor: pointer;
+}
+
 div#cart-summary {
   position: relative;
 }
@@ -104,13 +109,14 @@ div#cart-summary * {
   display: inherit;
 }
 
+div#cart-summary a {
+  color: inherit;
+  text-decoration: none;
+}
+
 div#cart-summary-items {
   vertical-align: middle;
   margin-right: 1em;
-}
-
-div#cart-summary-items a {
-  color: inherit;
 }
 
 div#cart-summary-items i {
