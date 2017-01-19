@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700,400italic' rel='stylesheet'
-          type='text/css'>
-    <link rel="stylesheet" type="text/css" href="styles/style.css"/>
-    <link rel="stylesheet" type="text/css"
-          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/css/grid.css"/>
+    <link rel="stylesheet" href="styles/style.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
 </head>
 <body>
 <header>
     <div id="title">
-        <img src="http://placehold.it/80x80">
+        <img src="img/logo.jpg">
         <div>
-            <h2>Brand/Company</h2>
-            <h4>Intro Punch Line</h4>
+            <h2>BookWorm.com</h2>
+            <h4>Keep Calm and Read a Book</h4>
         </div>
     </div>
     <div id="nav-utils">
         <div id="search">
-            <form method="get" action="search">
+            <form method="get">
                 <div id="search-input">
                     <label for="search-term"><i class="fa fa-search"></i></label>
                     <input type="text" id="search-term" name="search-term"
@@ -33,254 +32,34 @@
             <a href="#cart">
                 <div id="cart-summary-items">
                     <span><i class="fa fa-shopping-cart"></i></span>
-                    <p id="cart-item-count">3</p>
+                    <p id="cart-item-count">0</p>
                 </div>
                 <div id="cart-total">
-                    <p id="cart-sum-total">9999.99</p>
+                    <p id="cart-sum-total">0.00</p>
                 </div>
             </a>
         </div>
     </div>
 </header>
 <section id="products">
-    <h2>Product Category</h2>
-    <div class="container">
-        <div class="product">
+    <h2>Best Sellers</h2>
+    <div id="products-container" class="container">
+        <div class="product" id="product-template">
             <div class="img-container">
-                <img src="http://placehold.it/200x240"/>
+                <img src=""/>
             </div>
             <div class="description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
+                <p></p>
+                <p></p>
             </div>
             <div class="price-offer-container">
-                <span class="original-price">199.99</span>
-                <span class="discount-rate">50</span>
-                <p class="price">99.99</p>
+                <span class="promoCode"></span>
+                <span class="discount-rate"></span>
+                <p class="price"></p>
             </div>
             <div class="add-to-cart-container">
-                <input type="number" max="999" value="1" id="qty-1" name="qty-1">
-                <button type="button" id="add-1" onclick="">
-                    <i class="fa fa-cart-plus"></i>
-                </button>
-            </div>
-        </div>
-        <div class="product">
-            <div class="img-container">
-                <img src="http://placehold.it/200x240"/>
-            </div>
-            <div class="description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-            </div>
-            <div class="price-offer-container">
-                <span class="original-price">199.99</span>
-                <span class="discount-rate">50</span>
-                <p class="price">99.99</p>
-            </div>
-            <div class="add-to-cart-container">
-                <input type="number" max="999" value="1" id="qty-2" name="qty-2">
-                <button type="button" id="add-2" onclick="">
-                    <i class="fa fa-cart-plus"></i>
-                </button>
-            </div>
-        </div>
-        <div class="product">
-            <div class="img-container">
-                <img src="http://placehold.it/200x240"/>
-            </div>
-            <div class="description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-            </div>
-            <div class="price-offer-container">
-                <span class="original-price">199.99</span>
-                <span class="discount-rate">50</span>
-                <p class="price">99.99</p>
-            </div>
-            <div class="add-to-cart-container">
-                <input type="number" max="999" value="1" id="qty-3" name="qty-3">
-                <button type="button" id="add-3" onclick="">
-                    <i class="fa fa-cart-plus"></i>
-                </button>
-            </div>
-        </div>
-        <div class="product">
-            <div class="img-container">
-                <img src="http://placehold.it/200x240"/>
-            </div>
-            <div class="description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-            </div>
-            <div class="price-offer-container">
-                <span class="original-price">199.99</span>
-                <span class="discount-rate">50</span>
-                <p class="price">99.99</p>
-            </div>
-            <div class="add-to-cart-container">
-                <input type="number" max="999" value="1" id="qty-4" name="qty-4">
-                <button type="button" id="add-4" onclick="">
-                    <i class="fa fa-cart-plus"></i>
-                </button>
-            </div>
-        </div>
-        <div class="product">
-            <div class="img-container">
-                <img src="http://placehold.it/200x240"/>
-            </div>
-            <div class="description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-            </div>
-            <div class="price-offer-container">
-                <span class="original-price">199.99</span>
-                <span class="discount-rate">50</span>
-                <p class="price">99.99</p>
-            </div>
-            <div class="add-to-cart-container">
-                <input type="number" max="999" value="1" id="qty-5" name="qty-5">
-                <button type="button" id="add-5" onclick="">
-                    <i class="fa fa-cart-plus"></i>
-                </button>
-            </div>
-        </div>
-        <div class="product">
-            <div class="img-container">
-                <img src="http://placehold.it/200x240"/>
-            </div>
-            <div class="description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-            </div>
-            <div class="price-offer-container">
-                <span class="original-price">199.99</span>
-                <span class="discount-rate">50</span>
-                <p class="price">99.99</p>
-            </div>
-            <div class="add-to-cart-container">
-                <input type="number" max="999" value="1" id="qty-6" name="qty-6">
-                <button type="button" id="add-6" onclick="">
-                    <i class="fa fa-cart-plus"></i>
-                </button>
-            </div>
-        </div>
-        <div class="product">
-            <div class="img-container">
-                <img src="http://placehold.it/200x240"/>
-            </div>
-            <div class="description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-            </div>
-            <div class="price-offer-container">
-                <span class="original-price">199.99</span>
-                <span class="discount-rate">50</span>
-                <p class="price">99.99</p>
-            </div>
-            <div class="add-to-cart-container">
-                <input type="number" max="999" value="1" id="qty-7" name="qty-7">
-                <button type="button" id="add-7" onclick="">
-                    <i class="fa fa-cart-plus"></i>
-                </button>
-            </div>
-        </div>
-        <div class="product">
-            <div class="img-container">
-                <img src="http://placehold.it/200x240"/>
-            </div>
-            <div class="description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-            </div>
-            <div class="price-offer-container">
-                <span class="original-price">199.99</span>
-                <span class="discount-rate">50</span>
-                <p class="price">99.99</p>
-            </div>
-            <div class="add-to-cart-container">
-                <input type="number" max="999" value="1" id="qty-8" name="qty-8">
-                <button type="button" id="add-8" onclick="">
-                    <i class="fa fa-cart-plus"></i>
-                </button>
-            </div>
-        </div>
-        <div class="product">
-            <div class="img-container">
-                <img src="http://placehold.it/200x240"/>
-            </div>
-            <div class="description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-            </div>
-            <div class="price-offer-container">
-                <span class="original-price">199.99</span>
-                <span class="discount-rate">50</span>
-                <p class="price">99.99</p>
-            </div>
-            <div class="add-to-cart-container">
-                <input type="number" max="999" value="1" id="qty-9" name="qty-9">
-                <button type="button" id="add-9" onclick="">
-                    <i class="fa fa-cart-plus"></i>
-                </button>
-            </div>
-        </div>
-        <div class="product">
-            <div class="img-container">
-                <img src="http://placehold.it/200x240"/>
-            </div>
-            <div class="description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-            </div>
-            <div class="price-offer-container">
-                <span class="original-price">199.99</span>
-                <span class="discount-rate">50</span>
-                <p class="price">99.99</p>
-            </div>
-            <div class="add-to-cart-container">
-                <input type="number" max="999" value="1" id="qty-10" name="qty-10">
-                <button type="button" id="add-10" onclick="">
-                    <i class="fa fa-cart-plus"></i>
-                </button>
-            </div>
-        </div>
-        <div class="product">
-            <div class="img-container">
-                <img src="http://placehold.it/200x240"/>
-            </div>
-            <div class="description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-            </div>
-            <div class="price-offer-container">
-                <span class="original-price">199.99</span>
-                <span class="discount-rate">50</span>
-                <p class="price">99.99</p>
-            </div>
-            <div class="add-to-cart-container">
-                <input type="number" max="999" value="1" id="qty-11" name="qty-11">
-                <button type="button" id="add-11" onclick="">
-                    <i class="fa fa-cart-plus"></i>
-                </button>
-            </div>
-        </div>
-        <div class="product">
-            <div class="img-container">
-                <img src="http://placehold.it/200x240"/>
-            </div>
-            <div class="description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-            </div>
-            <div class="price-offer-container">
-                <span class="original-price">199.99</span>
-                <span class="discount-rate">50</span>
-                <p class="price">99.99</p>
-            </div>
-            <div class="add-to-cart-container">
-                <input type="number" max="999" value="1" id="qty-12" name="qty-12">
-                <button type="button" id="add-12" onclick="">
+                <input type="number" min="1" max="999" value="1"/>
+                <button type="button" class="add-to-cart">
                     <i class="fa fa-cart-plus"></i>
                 </button>
             </div>
@@ -288,103 +67,59 @@
     </div>
 </section>
 <section id="cart">
-    <h2>Your Cart</h2>
-    <div class="container cart-items">
+    <h2>My Cart</h2>
+    <div id="cart-items" class="container cart-items">
         <div class="table-header">
-            <div>
+            <div class="cart-img-container">
                 <p><i class="fa fa-picture-o"></i></p>
             </div>
-            <div class="">
+            <div class="cart-description-container">
                 <p>Item</p>
             </div>
-            <div class="">
+            <div class="cart-qty-container">
                 <p>Qty</p>
             </div>
-            <div>
+            <div class="cart-price-offer-container">
                 <p>Price</p>
             </div>
-            <div>
+            <div class="cart-subtotal-container">
                 <p>Subtotal</p>
             </div>
         </div>
-        <div class="row-item">
-            <div class="cart-image-container">
-                <img src="http://placehold.it/50x60"/>
+        <div class="row-item" id="cart-row-template">
+            <div class="cart-img-container">
+                <img src=""/>
             </div>
             <div class="cart-description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-                <p class="promo-applied">1 Offer, 50% OFF</p>
+                <p></p>
+                <p></p>
+                <p class="promo-applied"></p>
             </div>
             <div class="cart-qty-container">
-                <input type="number" max="999" value="1" id="cart-qty-1" name="cart-qty-1">
+                <input type="number" min="0" max="999"/>
                 <a href="javascript:false;"><i class="fa fa-times"></i> REMOVE</a>
             </div>
             <div class="cart-price-offer-container">
-                <p class="cart-price">99.99</p>
-                <p class="selling-price-if-offer">199.99</p>
-                <p class="offer-savings-if-offer">100.00</p>
+                <p class="cart-price"></p>
+                <p class="selling-price-if-offer"></p>
+                <p class="offer-savings-if-offer"></p>
             </div>
             <div class="cart-subtotal-container">
-                <p class="cart-subtotal">99.99</p>
-            </div>
-        </div>
-        <div class="row-item">
-            <div class="cart-image-container">
-                <img src="http://placehold.it/50x60"/>
-            </div>
-            <div class="cart-description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-                <p class="promo-applied">1 Offer, 50% OFF</p>
-            </div>
-            <div class="cart-qty-container">
-                <input type="number" max="999" value="1" id="cart-qty-2" name="cart-qty-2">
-                <a href="javascript:false;"><i class="fa fa-times"></i> REMOVE</a>
-            </div>
-            <div class="cart-price-offer-container">
-                <p class="cart-price">99.99</p>
-                <p class="selling-price-if-offer">199.99</p>
-                <p class="offer-savings-if-offer">100.00</p>
-            </div>
-            <div class="cart-subtotal-container">
-                <p class="cart-subtotal">99.99</p>
-            </div>
-        </div>
-        <div class="row-item">
-            <div class="cart-image-container">
-                <img src="http://placehold.it/50x60"/>
-            </div>
-            <div class="cart-description-container">
-                <p>Product Name</p>
-                <p>One liner description of the product.</p>
-                <p class="promo-applied">1 Offer, 50% OFF</p>
-            </div>
-            <div class="cart-qty-container">
-                <input type="number" max="999" value="1" id="cart-qty-3" name="cart-qty-3">
-                <a href="javascript:false;"><i class="fa fa-times"></i> REMOVE</a>
-            </div>
-            <div class="cart-price-offer-container">
-                <p class="cart-price">99.99</p>
-                <p class="selling-price-if-offer">199.99</p>
-                <p class="offer-savings-if-offer">100.00</p>
-            </div>
-            <div class="cart-subtotal-container">
-                <p class="cart-subtotal">99.99</p>
+                <p class="cart-subtotal"></p>
             </div>
         </div>
         <div class="table-footer">
             <div class="promo-code-text"><p></p></div>
             <div class="apply-promo-code">
-                <input type="text" placeholder="Enter Code Here" id="promo-code" name="promo-code"/>
+                <input type="text" placeholder="Enter Promo Code Here" id="promo-code" name="promo-code"/>
                 <input type="button" value="Apply" id="apply-promo-code" name="apply-promo-code"/>
             </div>
             <div class="blank-qty-footer"></div>
             <div class="total-savings">
-                <p>300.00</p>
+                <p></p>
             </div>
             <div class="estimated-total">
-                <p>299.97</p>
+                <p></p>
             </div>
         </div>
     </div>
@@ -394,5 +129,11 @@
     </div>
 </section>
 <footer></footer>
+<script type="text/javascript" src="js/Product.js"></script>
+<script type="text/javascript" src="js/Promotion.js"></script>
+<script type="text/javascript" src="js/Category.js"></script>
+<script type="text/javascript" src="js/Cart.js"></script>
+<script type="text/javascript" src="js/temp-json-db.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>

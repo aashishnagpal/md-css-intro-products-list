@@ -1,12 +1,18 @@
 body {
   box-sizing: border-box;
   font-size: 16px;
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   margin: 0;
 }
 
 body * {
   box-sizing: inherit;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 header {
@@ -31,6 +37,11 @@ div#title {
 
 div#title > * {
   display: inherit;
+}
+
+div#title img {
+  height: 5em;
+  width: auto;
 }
 
 div#title > div {
@@ -141,7 +152,6 @@ div#cart-total p {
 
 div#cart-total p:before {
   content: '$';
-  vertical-align: middle;
   margin-right: 1px;
 }
 
@@ -151,12 +161,12 @@ section#products {
 }
 
 section#products h2 {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/hero.jpg) center;
+  background-size: cover;
   text-transform: uppercase;
-  text-decoration: underline;
-  font-weight: bold;
+  font-weight: 300;
   font-size: 3em;
-  background-color: #95a5a6;
-  padding: 2em;
+  padding: 3em 0;
   text-indent: 1em;
   margin: 0.2em 0;
   color: #fdfdfd;
@@ -165,13 +175,26 @@ section#products h2 {
 
 section#products div.container {
   text-align: center;
+  display: block;
 }
 
 section#products div.container > div.product {
   display: inline-block;
   border: 0.1em dotted #f30;
-  margin: 1.5em;
-  padding: 1em;
+  margin: 0.5em;
+  padding: 0.5em;
+  width: 23%;
+}
+
+div.product div.img-container {
+  width: auto;
+  height: 250px;
+  text-align: center;
+}
+
+div.product div.img-container img {
+  height: 100%;
+  width: auto;
 }
 
 div.product div.description-container {
@@ -180,7 +203,7 @@ div.product div.description-container {
 }
 
 div.product div.description-container p:first-child {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 div.product div.description-container p {
@@ -188,14 +211,14 @@ div.product div.description-container p {
 }
 
 div.product div.price-offer-container {
-  text-align: left;
+  text-align: center;
 }
 
 div.product div.price-offer-container span {
-  font-size: 0.8em;
+  font-size: 0.85em;
 }
 
-div.product div.price-offer-container span:first-child {
+/*div.product div.price-offer-container span:first-child {
   text-decoration: line-through;
   color: #888;
 }
@@ -203,15 +226,26 @@ div.product div.price-offer-container span:first-child {
 div.product div.price-offer-container span:first-child:before {
   content: "$";
   vertical-align: middle;
-}
+}*/
 
-div.product div.price-offer-container span:nth-child(2) {
+div.product div.price-offer-container span {
   color: #f60;
 }
 
-div.product div.price-offer-container span:nth-child(2):after {
+div.product div.price-offer-container span.promoCode {
+  font-weight: 700;
+}
+
+div.product div.price-offer-container span.value-off:before {
+  content: "$";
+}
+
+div.product div.price-offer-container span.value-off:after {
+  content: " OFF!";
+}
+
+div.product div.price-offer-container span.percent-off:after {
   content: "% OFF!";
-  vertical-align: middle;
 }
 
 div.product div.price-offer-container p {
@@ -225,13 +259,12 @@ div.product div.price-offer-container p {
 
 div.product div.price-offer-container p:before {
   content: "$";
-  vertical-align: middle;
 }
 
 div.product div.add-to-cart-container {
   font-size: 0.8em;
   text-align: right;
-  margin-top: 1.5em;
+  margin-top: 1em;
 }
 
 div.product div.add-to-cart-container input[type="number"] {
@@ -270,14 +303,13 @@ section#cart {
 
 section#cart h2 {
   color: #fff;
-  background-color: rgba(255, 102, 0, 0.8);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/cart.jpg) center;
+  background-size: cover;
   text-transform: uppercase;
-  text-decoration: underline;
-  font-weight: bold;
-  font-style: italic;
-  font-size: 2em;
+  font-weight: 300;
+  font-size: 3em;
   padding: 2em;
-  text-align: right;
+  text-align: center;
   line-height: 1.2em;
 }
 
@@ -308,24 +340,33 @@ section#cart div.cart-items div.table-footer > div {
   vertical-align: top;
 }
 
+section#cart div.cart-items div.table-header p {
+  margin: 0.5em 0;
+}
+section#cart div.cart-items div.row-item > div {
+  height: 80px;
+}
+
 section#cart div.cart-items div.table-header > div {
   text-align: center;
   color: #f60;
-  font-weight: bold;
   font-size: 1.5em;
   text-transform: uppercase;
 }
 
-div.cart-items div.row-item div.cart-image-container {
+div.cart-items div.row-item div.cart-img-container {
   text-align: center;
   vertical-align: middle;
   position: relative;
+  width: 8%;
 }
 
-div.cart-items div.row-item div.cart-image-container img {
+div.cart-items div.row-item div.cart-img-container img {
   position: absolute;
-  top: 15%;
-  transform: translate(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  width: 45%;
 }
 
 div.cart-items div.row-item div.cart-description-container {
@@ -338,10 +379,10 @@ div.cart-items div.row-item div.cart-description-container p {
 }
 
 div.cart-items div.row-item div.cart-description-container p:first-child {
-  font-weight: bold;
+  font-weight: 700;
 }
 
-div.cart-items div.row-item div.cart-description-container p.promo-applied {
+div.cart-items div.row-item div.cart-description-container p.promo-applied:not(:empty) {
   margin: 0.5em 0;
   padding: 0.2em 0.5em;
   font-size: 0.9em;
@@ -350,7 +391,7 @@ div.cart-items div.row-item div.cart-description-container p.promo-applied {
   display: inline-block;
 }
 
-div.cart-items div.row-item div.cart-description-container p.promo-applied:before {
+div.cart-items div.row-item div.cart-description-container p.promo-applied:not(:empty):before {
   content: "OFFERS APPLIED: ";
   color: #f60;
 }
@@ -358,6 +399,7 @@ div.cart-items div.row-item div.cart-description-container p.promo-applied:befor
 div.cart-items div.row-item div.cart-qty-container {
   text-align: center;
   padding: 0.5em 0;
+  width: 6%;
 }
 
 div.cart-items div.row-item div.cart-qty-container > * {
@@ -367,7 +409,7 @@ div.cart-items div.row-item div.cart-qty-container > * {
 div.cart-items div.row-item div.cart-qty-container input[type="number"] {
   font-size: 1.2em;
   width: 3.2em;
-  margin: 0.5em auto;
+  margin: 0 auto 0.5em auto;
 }
 
 div.cart-items div.row-item div.cart-qty-container a {
@@ -376,8 +418,10 @@ div.cart-items div.row-item div.cart-qty-container a {
   font-size: 0.8em;
 }
 
-div.cart-items div.row-item div.cart-price-offer-container {
+div.cart-items div.row-item div.cart-price-offer-container,
+div.cart-items div.row-item div.cart-subtotal-container {
   padding: 0 0.5em;
+  width: 20%;
 }
 
 div.cart-items div.row-item div.cart-price-offer-container p,
@@ -385,45 +429,40 @@ div.cart-items div.row-item div.cart-subtotal-container p {
   margin: 0;
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p:first-child,
-div.cart-items div.row-item div.cart-subtotal-container p:first-child {
+div.cart-items div.row-item div.cart-price-offer-container p.cart-price,
+div.cart-items div.row-item div.cart-subtotal-container p.cart-subtotal {
   text-align: center;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.2em;
   margin: 0.5em;
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p:first-child:before,
-div.cart-items div.row-item div.cart-subtotal-container p:first-child:before {
+div.cart-items div.row-item div.cart-price-offer-container p.cart-price:before,
+div.cart-items div.row-item div.cart-subtotal-container p.cart-subtotal:before {
   content: "$";
-  vertical-align: middle;
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p:nth-child(2) {
+div.cart-items div.row-item div.cart-price-offer-container p.selling-price-if-offer:not(:empty) {
   font-size: 0.8em;
   color: #888;
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p:nth-child(2):before {
+div.cart-items div.row-item div.cart-price-offer-container p.selling-price-if-offer:not(:empty):before {
   content: "MSRP: $"
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p:nth-child(3) {
+div.cart-items div.row-item div.cart-price-offer-container p.offer-savings-if-offer:not(:empty) {
   font-size: 0.8em;
   color: #f60;
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p:nth-child(3):before {
+div.cart-items div.row-item div.cart-price-offer-container p.offer-savings-if-offer:not(:empty):before {
   content: "Savings: $"
 }
 
 section#cart div.cart-items div.table-footer div.promo-code-text {
   border-right: 0;
   text-align: right;
-}
-
-section#cart div.cart-items div.table-footer div.apply-promo-code {
-  border-left: 0;
 }
 
 div.cart-items div.table-footer div.promo-code-text,
@@ -437,7 +476,7 @@ div.cart-items div.table-footer div.promo-code-text p {
 }
 
 div.cart-items div.table-footer div.promo-code-text p:before {
-  content: "Promo Code:";
+  content: "Promo Code";
   font-size: 0.9em;
 }
 
@@ -451,7 +490,7 @@ div.cart-items div.table-footer div.apply-promo-code input[type="button"] {
   border: 0;
   padding: 0.2em;
   color: #fff;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 div.cart-items div.table-footer div.apply-promo-code input[type="button"]:active {
@@ -465,8 +504,8 @@ div.cart-items div.table-footer div.apply-promo-code input[type="button"]:focus 
 div.cart-items div.table-footer div.total-savings,
 div.cart-items div.table-footer div.estimated-total {
   text-align: center;
-  font-size: 1em;
-  font-weight: bold;
+  font-size: 1.2em;
+  font-weight: 700;
 }
 
 div.cart-items div.table-footer div.total-savings p {
@@ -475,10 +514,6 @@ div.cart-items div.table-footer div.total-savings p {
 
 div.cart-items div.table-footer div.total-savings p:before {
   content: "Total Savings: $";
-}
-
-div.cart-items div.table-footer div.estimated-total p {
-  font-size: 1.2em;
 }
 
 div.cart-items div.table-footer div.estimated-total p:before {
@@ -522,3 +557,7 @@ div.cart-buttons-container input#checkout:active {
 
 
 
+section#products div#product-template,
+section#cart div#cart-row-template {
+  display: none;
+}
