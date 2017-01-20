@@ -25,25 +25,6 @@ var Cart = (function () {
   CartItem.prototype = ProductProtoCopy;
 
   function Cart(orderId) {
-    var self = this;
-    var updateItemCount = function () {
-      self.itemCount = Object.keys(self.items).length;
-    };
-
-    var updateCartTotals = function () {
-      var items = self.items;
-      self.totalPrice = 0;
-      self.savings = 0;
-      self.netPrice = 0;
-      for (var id in items) {
-        if (items.hasOwnProperty(id)) {
-          self.totalPrice += items[id].price * items[id].qty;
-          self.savings += items[id].savings * items[id].qty;
-          self.netPrice += items[id].netPrice * items[id].qty;
-        }
-      }
-    };
-
     this.orderId = orderId;
     this.items = {};
     this.itemCount = 0;
@@ -55,11 +36,48 @@ var Cart = (function () {
     // details of promo should be read from promo array
     this.promoApplied = '';
 
+    var self = this;
+    var updateItemCount = function () {
+      var items = self.items;
+      self.itemCount = 0;
+      for (var id in items) {
+        if (items.hasOwnProperty(id)) {
+          self.itemCount += items[id].qty;
+        }
+      }
+    };
+
+    var updateCartTotals = function () {
+      var items = self.items;
+      self.totalPrice = 0.0;
+      self.savings = 0.0;
+      self.netPrice = 0.0;
+      for (var id in items) {
+        if (items.hasOwnProperty(id)) {
+          self.totalPrice += items[id].price * items[id].qty;
+          self.savings += items[id].savings * items[id].qty;
+          self.netPrice += items[id].netPrice * items[id].qty;
+        }
+      }
+    };
+
+    var calcNetPrice = function (type, discount, amount) {
+      if (type === 'percent-off') {
+        return (1.00 - (discount / 100)) * amount;
+      } else if (type === 'value-off') {
+        return (1.00 * amount) - (1.00 * discount);
+      }
+    };
+
+    var decimalRoundOff = function (value) {
+      return +(value.toFixed(2));
+    };
+
     this.addItem = function (productId, qty) {
       qty = +qty;
       var cartItemId = 'CI' + productId.slice(1);
       if (!this.updateItem(cartItemId, qty, 'add')) {
-        this.items[cartItemId] = new CartItem(products[productId], qty);
+        this.items[cartItemId] = new CartItem(productsData[productId], qty);
       }
       updateItemCount();
       updateCartTotals();
@@ -70,9 +88,11 @@ var Cart = (function () {
       var updated = false;
       qty = +qty;
       if (itemId in this.items) {
-        if (updateOperation === 'add')
-          this.items[itemId].qty += qty;
-        else if (updateOperation === 'replace') {
+        if (updateOperation === 'add') {
+          var currentQty = this.items[itemId].qty;
+          var newQty = currentQty + qty;
+          this.items[itemId].qty = (newQty <= 999) ? newQty : 999;
+        } else if (updateOperation === 'replace') {
           if (qty === 0)
             this.removeItem(itemId);
           else
@@ -89,15 +109,68 @@ var Cart = (function () {
     this.removeItem = function (itemId) {
       if (itemId in this.items) {
         delete this.items[itemId];
+        updateItemCount();
+        updateCartTotals();
       }
     };
 
-    this.applyPromotionCode = function (promoId) {
+    var isNewPromotionCheaper = function (promoId) {
+      var retVal = {
+        cartItemsCopy: JSON.parse(JSON.stringify(self.items)),
+        isCheaper: false
+      };
+      if (self.promoApplied !== promoId) {
+        var promoToApply = promotionsData[promoId];
+        var newNetPrice = 0.00;
+        for (var itemId in retVal.cartItemsCopy) {
+          if (retVal.cartItemsCopy.hasOwnProperty(itemId)) {
+            var item = retVal.cartItemsCopy[itemId];
+            item.netPrice = item.price;
+            item.savings = 0.00;
 
+            if (promoToApply.applicableOn === 'cart') {
+              item.offerApplied = promoId;
+              item.netPrice = decimalRoundOff(calcNetPrice(promoToApply.discountType, promoToApply.discount, item.price));
+              item.savings = decimalRoundOff(item.price - item.netPrice);
+            }
+            else if (promoToApply.applicableOn === 'category') {
+              item.categories.forEach(function (catId) {
+                if (catId in categoriesData && categoriesData[catId].promotionAvailable === promoId) {
+                  item.offerApplied = promoId;
+                  item.netPrice = decimalRoundOff(calcNetPrice(promoToApply.discountType, promoToApply.discount, item.price));
+                  item.savings = decimalRoundOff(item.price - item.netPrice);
+                }
+              });
+            }
+            else if (promoToApply.applicableOn === 'product') {
+              if (item.promotionAvailable === promoId) {
+                item.offerApplied = promoId;
+                item.netPrice = decimalRoundOff(calcNetPrice(promoToApply.discountType, promoToApply.discount, item.price));
+                item.savings = decimalRoundOff(item.price - item.netPrice);
+              }
+            }
+          }
+        }
+        for (var id in retVal.cartItemsCopy) {
+          if (retVal.cartItemsCopy.hasOwnProperty(id)) {
+            newNetPrice += retVal.cartItemsCopy[id].netPrice * retVal.cartItemsCopy[id].qty;
+          }
+        }
+        retVal.isCheaper = (newNetPrice < self.netPrice);
+      }
+      return retVal;
     };
 
-
+    this.applyPromotionCode = function (promoId) {
+      var compared = isNewPromotionCheaper(promoId);
+      if (compared.isCheaper) {
+        this.promoApplied = promoId;
+        this.items = JSON.parse(JSON.stringify(compared.cartItemsCopy));
+        updateCartTotals();
+      }
+    };
   }
 
   return Cart;
-})();
+})
+();

@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="vendor/css/grid.css"/>
     <link rel="stylesheet" href="styles/style.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
 <header>
@@ -29,7 +29,7 @@
             </form>
         </div>
         <div id="cart-summary">
-            <a href="#cart">
+            <a id="go-to-cart" href="#cart">
                 <div id="cart-summary-items">
                     <span><i class="fa fa-shopping-cart"></i></span>
                     <p id="cart-item-count">0</p>
@@ -39,7 +39,10 @@
                 </div>
             </a>
         </div>
+        <div class="hide-button"><button><i class="fa fa-window-minimize"></i> Minimize Cart</button></div>
+        <div class="show-button"><button><i class="fa fa-window-maximize"></i> Maximize Cart</button></div>
     </div>
+
 </header>
 <section id="products">
     <h2>Best Sellers</h2>
@@ -51,10 +54,12 @@
             <div class="description-container">
                 <p></p>
                 <p></p>
+                <div class="categories"></div>
             </div>
             <div class="price-offer-container">
-                <span class="promoCode"></span>
                 <span class="discount-rate"></span>
+                <span>&nbsp;&nbsp;</span>
+                <span class="promoCode"></span>
                 <p class="price"></p>
             </div>
             <div class="add-to-cart-container">
@@ -109,10 +114,15 @@
             </div>
         </div>
         <div class="table-footer">
-            <div class="promo-code-text"><p></p></div>
+            <div class="promo-code-text">
+                <p>Promo Code <i class="fa fa-question-circle"></i></p>
+                <div id="promotions-tooltip"></div>
+            </div>
             <div class="apply-promo-code">
-                <input type="text" placeholder="Enter Promo Code Here" id="promo-code" name="promo-code"/>
+                <input type="text" placeholder="Enter Promo Code Here" id="promo-code" name="promo-code" list="promos"/>
                 <input type="button" value="Apply" id="apply-promo-code" name="apply-promo-code"/>
+                <div class="error" id="invalid-promo"></div>
+                <datalist id="promos"></datalist>
             </div>
             <div class="blank-qty-footer"></div>
             <div class="total-savings">

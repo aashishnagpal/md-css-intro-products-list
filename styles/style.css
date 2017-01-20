@@ -59,6 +59,7 @@ div#title h4 {
 
 div#nav-utils {
   float: right;
+  position: relative;
 }
 
 div#nav-utils > div {
@@ -136,13 +137,13 @@ div#cart-summary-items i {
 
 div#cart-summary-items p {
   position: absolute;
-  left: 2.2em;
+  left: 2em;
   top: -1em;
   color: #fff;
   background-color: #f60;
   border-radius: 50%;
   border: 1px solid #888;
-  padding: 1px 6px 3px 7px;
+  padding: 2px 6px;
   font-size: 0.8em;
 }
 
@@ -198,7 +199,7 @@ div.product div.img-container img {
 }
 
 div.product div.description-container {
-  font-size: 0.8em;
+  font-size: 0.9em;
   margin: 1em 0;
 }
 
@@ -210,6 +211,18 @@ div.product div.description-container p {
   margin: 0;
 }
 
+div.product div.description-container div.categories {
+  margin-top: 2px;
+}
+
+div.product div.description-container div.categories span {
+  background: #f60;
+  padding: 2px 4px;
+  border-radius: 6px;
+  color: #fff;
+  margin: 0 2px;
+}
+
 div.product div.price-offer-container {
   text-align: center;
 }
@@ -218,22 +231,17 @@ div.product div.price-offer-container span {
   font-size: 0.85em;
 }
 
-/*div.product div.price-offer-container span:first-child {
-  text-decoration: line-through;
-  color: #888;
-}
-
-div.product div.price-offer-container span:first-child:before {
-  content: "$";
-  vertical-align: middle;
-}*/
-
 div.product div.price-offer-container span {
   color: #f60;
 }
 
-div.product div.price-offer-container span.promoCode {
+div.product div.price-offer-container span.promoCode:not(:empty) {
   font-weight: 700;
+}
+
+div.product div.price-offer-container span.promoCode:not(:empty):before {
+  font-weight: 400;
+  content: "Use PromoCode: "
 }
 
 div.product div.price-offer-container span.value-off:before {
@@ -299,6 +307,11 @@ section#cart {
   margin-top: 0.2em;
   border-bottom: 0.2em solid #f30;
   padding-bottom: 0.5em;
+  display: none;
+}
+
+section#cart.show {
+  display: block;
 }
 
 section#cart h2 {
@@ -343,6 +356,7 @@ section#cart div.cart-items div.table-footer > div {
 section#cart div.cart-items div.table-header p {
   margin: 0.5em 0;
 }
+
 section#cart div.cart-items div.row-item > div {
   height: 80px;
 }
@@ -358,7 +372,7 @@ div.cart-items div.row-item div.cart-img-container {
   text-align: center;
   vertical-align: middle;
   position: relative;
-  width: 8%;
+  width: 9%;
 }
 
 div.cart-items div.row-item div.cart-img-container img {
@@ -366,7 +380,7 @@ div.cart-items div.row-item div.cart-img-container img {
   top: 50%;
   transform: translate(-50%, -50%);
   height: auto;
-  width: 45%;
+  width: 40%;
 }
 
 div.cart-items div.row-item div.cart-description-container {
@@ -473,10 +487,11 @@ div.cart-items div.table-footer div.apply-promo-code {
 div.cart-items div.table-footer div.promo-code-text p {
   display: inline-block;
   margin: 0.2em 0;
+  font-size: 0.9em;
 }
 
-div.cart-items div.table-footer div.promo-code-text p:before {
-  content: "Promo Code";
+div.cart-items div.table-footer div.promo-code-text div.promotions-list {
+  margin: 0.2em 0;
   font-size: 0.9em;
 }
 
@@ -499,6 +514,11 @@ div.cart-items div.table-footer div.apply-promo-code input[type="button"]:active
 
 div.cart-items div.table-footer div.apply-promo-code input[type="button"]:focus {
   outline: none;
+}
+
+div.cart-items div.table-footer div.apply-promo-code div.error {
+  font-size: 0.8em;
+  color: #e74c3c;
 }
 
 div.cart-items div.table-footer div.total-savings,
@@ -553,11 +573,28 @@ div.cart-buttons-container input#checkout:active {
   background-color: #f30;
 }
 
-
-
-
-
 section#products div#product-template,
 section#cart div#cart-row-template {
   display: none;
+}
+
+.hide-button,
+.show-button {
+  position: absolute;
+  bottom: 0.2em;
+  right: -0.5em;
+  visibility: hidden;
+}
+
+.hide-button button,
+.show-button button {
+  border: 0;
+  background-color: transparent;
+  font-size: 0.9em;
+  color: #f30;
+}
+
+.hide-button.visible,
+.show-button.visible {
+  visibility: visible;
 }
