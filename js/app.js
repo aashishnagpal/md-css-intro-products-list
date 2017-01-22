@@ -80,8 +80,10 @@
       if (!cartShowButton.classList.contains('visible'))
         document.querySelector('.show-button').classList.remove('visible');
     } else {
-      if (!cartHideButton.classList.contains('visible') && !cartShowButton.classList.contains('visible'))
+      if (!cartHideButton.classList.contains('visible') && !cartShowButton.classList.contains('visible')) {
         cartShowButton.classList.add('visible');
+        cartShowButton.click();
+      }
     }
   };
 
@@ -151,6 +153,25 @@
         var item = cart.items[row.id.split('-')[1]];
         row.querySelector('.cart-price').innerText = item.netPrice.toFixed(2);
         row.querySelector('.cart-subtotal').innerText = (item.netPrice * item.qty).toFixed(2);
+
+        if (item.netPrice !== item.price) {
+          if (item.itemPromoApplied) {
+            var itemPromoApplied = promotionsData[item.itemPromoApplied];
+
+            var discountDetail = row.querySelector('.promo-applied');
+            discountDetail.classList.remove('value-off');
+            discountDetail.classList.remove('percent-off');
+            if (itemPromoApplied.discountType)
+              discountDetail.classList.add(itemPromoApplied.discountType);
+            discountDetail.innerHTML = '<span>' + (itemPromoApplied.discount || '');
+          }
+          row.querySelector('.selling-price-if-offer').innerText = item.price.toFixed(2);
+          row.querySelector('.offer-savings-if-offer').innerText = item.savings.toFixed(2);
+        } else {
+          row.querySelector('.promo-applied').innerHTML = '';
+          row.querySelector('.selling-price-if-offer').innerText = '';
+          row.querySelector('.offer-savings-if-offer').innerText = '';
+        }
       });
     }
   };
@@ -171,14 +192,28 @@
     showHideCartAndButtons();
   };
 
-  var populatePromotionsDataList = function () {
+  var populatePromotionsList = function () {
     for (var promo in promotionsData) {
       if (promotionsData.hasOwnProperty(promo)) {
         var option = document.createElement('option');
         option.setAttribute('value', promotionsData[promo].code);
         option.setAttribute('id', promotionsData[promo].id);
-
         document.getElementById('promos').appendChild(option);
+
+        var li = document.createElement('li');
+        li.innerHTML = '<strong>' + promotionsData[promo].code + '</strong> ' +
+            (promotionsData[promo].discountType === 'value-off' ? '$' : '') +
+            promotionsData[promo].discount +
+            (promotionsData[promo].discountType === 'percent-off' ? '%' : '') +
+            ' Off ';
+        if (promotionsData[promo].applicableOn === 'cart') {
+          li.innerHTML += 'your enitre cart.'
+        } else if (promotionsData[promo].applicableOn === 'category') {
+          li.innerHTML += 'a category (apply to check).'
+        } else if (promotionsData[promo].applicableOn === 'product') {
+          li.innerHTML += 'certain products (apply to check).'
+        }
+        document.getElementById('promotions-tooltip').appendChild(li);
       }
     }
   };
@@ -206,11 +241,11 @@
   };
 
   (function () {
-    var cartLink = document.getElementById('go-to-cart');
     var sectionCart = document.getElementById('cart');
     var cartHideButton = document.querySelector('.hide-button');
     var cartShowButton = document.querySelector('.show-button');
     cartHideButton.addEventListener('click', function () {
+      document.getElementById('go-to-products').click();
       this.classList.toggle('visible');
       cartShowButton.classList.toggle('visible');
       sectionCart.classList.toggle('show');
@@ -220,7 +255,7 @@
       this.classList.toggle('visible');
       cartHideButton.classList.toggle('visible');
       sectionCart.classList.toggle('show');
-      cartLink.click();
+      document.getElementById('go-to-cart').click();
     });
   })();
 
@@ -228,7 +263,7 @@
     // initialize cart
     window.cart = new Cart('order-001');
     populateProductsPage();
-    populatePromotionsDataList();
+    populatePromotionsList();
     document.getElementById('apply-promo-code').addEventListener('click', applyPromotion);
   };
   init();

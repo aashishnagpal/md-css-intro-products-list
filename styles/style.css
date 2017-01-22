@@ -410,6 +410,18 @@ div.cart-items div.row-item div.cart-description-container p.promo-applied:not(:
   color: #f60;
 }
 
+div.cart-items div.row-item div.cart-description-container p.value-off span:before {
+  content: "$";
+}
+
+div.cart-items div.row-item div.cart-description-container p.value-off span:after {
+  content: " OFF!";
+}
+
+div.cart-items div.row-item div.cart-description-container p.percent-off span:after {
+  content: "% OFF!";
+}
+
 div.cart-items div.row-item div.cart-qty-container {
   text-align: center;
   padding: 0.5em 0;
@@ -477,6 +489,7 @@ div.cart-items div.row-item div.cart-price-offer-container p.offer-savings-if-of
 section#cart div.cart-items div.table-footer div.promo-code-text {
   border-right: 0;
   text-align: right;
+  position: relative;
 }
 
 div.cart-items div.table-footer div.promo-code-text,
@@ -597,4 +610,26 @@ section#cart div#cart-row-template {
 .hide-button.visible,
 .show-button.visible {
   visibility: visible;
+}
+
+ul#promotions-tooltip {
+  position: absolute;
+  left: 8.5em;
+  top: 1em;
+  text-align: left;
+  font-size: 0.85em;
+  background-color: rgba(255,255,255, 0.9);
+  border: 1px dotted #f60;
+  padding: 0.5em;
+  display: none;
+  width: 300%;
+  list-style: none;
+}
+
+ul#promotions-tooltip li {
+  margin: 0.2em 0;
+}
+
+div.promo-code-text p:hover + ul#promotions-tooltip {
+  display: block;
 }

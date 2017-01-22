@@ -15,7 +15,7 @@ var Cart = (function () {
         product.promotionAvailable
     );
     this.qty = qty;
-    this.offerApplied = '';
+    this.itemPromoApplied = '';
     this.savings = 0.00;
     this.netPrice = product.price;
   }
@@ -125,18 +125,19 @@ var Cart = (function () {
         for (var itemId in retVal.cartItemsCopy) {
           if (retVal.cartItemsCopy.hasOwnProperty(itemId)) {
             var item = retVal.cartItemsCopy[itemId];
+            item.itemPromoApplied = '';
             item.netPrice = item.price;
             item.savings = 0.00;
 
             if (promoToApply.applicableOn === 'cart') {
-              item.offerApplied = promoId;
+              item.itemPromoApplied = promoId;
               item.netPrice = decimalRoundOff(calcNetPrice(promoToApply.discountType, promoToApply.discount, item.price));
               item.savings = decimalRoundOff(item.price - item.netPrice);
             }
             else if (promoToApply.applicableOn === 'category') {
               item.categories.forEach(function (catId) {
                 if (catId in categoriesData && categoriesData[catId].promotionAvailable === promoId) {
-                  item.offerApplied = promoId;
+                  item.itemPromoApplied = promoId;
                   item.netPrice = decimalRoundOff(calcNetPrice(promoToApply.discountType, promoToApply.discount, item.price));
                   item.savings = decimalRoundOff(item.price - item.netPrice);
                 }
@@ -144,7 +145,7 @@ var Cart = (function () {
             }
             else if (promoToApply.applicableOn === 'product') {
               if (item.promotionAvailable === promoId) {
-                item.offerApplied = promoId;
+                item.itemPromoApplied = promoId;
                 item.netPrice = decimalRoundOff(calcNetPrice(promoToApply.discountType, promoToApply.discount, item.price));
                 item.savings = decimalRoundOff(item.price - item.netPrice);
               }

@@ -30,8 +30,7 @@
     ),
     'P002': new Product(
         'P002',
-        // 23.95,
-        10.00,
+        23.95,
         'A Heartbreaking Work of Staggering Genius',
         'Dave Eggers',
         '0375725784',
@@ -58,8 +57,7 @@
     ),
     'P005': new Product(
         'P005',
-        // 25.40,
-        10,
+        25.40,
         'Harry Potter and the Cursed Child',
         'J.K. Rowling, Jack Thorne, John Tiffany',
         '1338099132',
@@ -95,8 +93,7 @@
     ),
     'P009': new Product(
         'P009',
-        // 18.39,
-        10.00,
+        18.39,
         'Harry Potter And The Goblet Of Fire',
         'J.K. Rowling',
         '0439139597',
@@ -105,8 +102,7 @@
     ),
     'P010': new Product(
         'P010',
-        // 15.84,
-        10.00,
+        15.84,
         'Harry Potter And The Prisoner Of Azkaban',
         'J.K. Rowling',
         '0439136350',
