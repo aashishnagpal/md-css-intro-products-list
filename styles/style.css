@@ -1,3 +1,7 @@
+/*--------------------------------------------------------*/
+/* BASIC SETUP */
+/*--------------------------------------------------------*/
+
 body {
   box-sizing: border-box;
   font-size: 16px;
@@ -9,11 +13,14 @@ body * {
   box-sizing: inherit;
 }
 
-.clearfix:after {
-  content: "";
-  display: block;
-  clear: both;
+button,
+input[type="button"] {
+  cursor: pointer;
 }
+
+/*--------------------------------------------------------*/
+/* HEADER */
+/*--------------------------------------------------------*/
 
 header {
   color: #f60;
@@ -108,11 +115,6 @@ div#search #submit-search:focus {
   outline: none;
 }
 
-button,
-input[type="button"] {
-  cursor: pointer;
-}
-
 div#cart-summary {
   position: relative;
 }
@@ -156,6 +158,10 @@ div#cart-total p:before {
   margin-right: 1px;
 }
 
+/*--------------------------------------------------------*/
+/* PRODUCTS */
+/*--------------------------------------------------------*/
+
 section#products {
   margin-top: 6.6em;
   border-bottom: 0.2em solid #f30;
@@ -187,35 +193,35 @@ section#products div.container > div.product {
   width: 23%;
 }
 
-div.product div.img-container {
+div.img-container {
   width: auto;
   height: 250px;
   text-align: center;
 }
 
-div.product div.img-container img {
+div.img-container img {
   height: 100%;
   width: auto;
 }
 
-div.product div.description-container {
+div.description-container {
   font-size: 0.9em;
   margin: 1em 0;
 }
 
-div.product div.description-container p:first-child {
+div.description-container p:first-child {
   font-weight: 700;
 }
 
-div.product div.description-container p {
+div.description-container p {
   margin: 0;
 }
 
-div.product div.description-container div.categories {
+div.description-container div.categories {
   margin-top: 2px;
 }
 
-div.product div.description-container div.categories span {
+div.description-container div.categories span {
   background: #f60;
   padding: 2px 4px;
   border-radius: 6px;
@@ -223,40 +229,40 @@ div.product div.description-container div.categories span {
   margin: 0 2px;
 }
 
-div.product div.price-offer-container {
+div.price-offer-container {
   text-align: center;
 }
 
-div.product div.price-offer-container span {
+div.price-offer-container span {
   font-size: 0.85em;
 }
 
-div.product div.price-offer-container span {
+div.price-offer-container span {
   color: #f60;
 }
 
-div.product div.price-offer-container span.promoCode:not(:empty) {
+div.price-offer-container span.promoCode:not(:empty) {
   font-weight: 700;
 }
 
-div.product div.price-offer-container span.promoCode:not(:empty):before {
+div.price-offer-container span.promoCode:not(:empty):before {
   font-weight: 400;
   content: "Use PromoCode: "
 }
 
-div.product div.price-offer-container span.value-off:before {
+div.price-offer-container span.value-off:before {
   content: "$";
 }
 
-div.product div.price-offer-container span.value-off:after {
+div.price-offer-container span.value-off:after {
   content: " OFF!";
 }
 
-div.product div.price-offer-container span.percent-off:after {
+div.price-offer-container span.percent-off:after {
   content: "% OFF!";
 }
 
-div.product div.price-offer-container p {
+div.price-offer-container p {
   font-size: 1.2em;
   text-align: center;
   margin: 0;
@@ -265,43 +271,47 @@ div.product div.price-offer-container p {
   border-bottom: 0.1em dashed #f30;
 }
 
-div.product div.price-offer-container p:before {
+div.price-offer-container p:before {
   content: "$";
 }
 
-div.product div.add-to-cart-container {
+div.add-to-cart-container {
   font-size: 0.8em;
   text-align: right;
   margin-top: 1em;
 }
 
-div.product div.add-to-cart-container input[type="number"] {
+div.add-to-cart-container input[type="number"] {
   font-size: 1.5em;
   width: 3.2em;
 }
 
-div.product div.add-to-cart-container input[type="number"]:focus {
+div.add-to-cart-container input[type="number"]:focus {
   outline-color: #f30;
 }
 
-div.product div.add-to-cart-container button {
+div.add-to-cart-container button {
   font-size: 2.5em;
   vertical-align: middle;
   color: #f60;
-  padding-top: 0px;
+  padding-top: 0;
   padding-bottom: 0;
   margin-top: -0.2em;
   background-color: #fff;
   border: 0;
 }
 
-div.product div.add-to-cart-container button:focus {
+div.add-to-cart-container button:focus {
   outline: none;
 }
 
-div.product div.add-to-cart-container button:active {
+div.add-to-cart-container button:active {
   color: #f30;
 }
+
+/*--------------------------------------------------------*/
+/* CART */
+/*--------------------------------------------------------*/
 
 section#cart {
   margin-top: 0.2em;
@@ -326,56 +336,56 @@ section#cart h2 {
   line-height: 1.2em;
 }
 
-section#cart div.cart-items {
+div.cart-items {
   display: table;
   width: 100%;
   padding: 1em;
 }
 
-section#cart div.cart-items div.table-header {
+div.table-header {
   display: table-header-group;
 }
 
-section#cart div.cart-items div.row-item {
+div.row-item {
   display: table-row;
 }
 
-section#cart div.cart-items div.table-footer {
+div.table-footer {
   display: table-footer-group;
 }
 
-section#cart div.cart-items div.table-header > div,
-section#cart div.cart-items div.row-item > div,
-section#cart div.cart-items div.table-footer > div {
+div.table-header > div,
+div.row-item > div,
+div.table-footer > div {
   display: table-cell;
   border: 1px dotted #888;
   border-collapse: collapse;
   vertical-align: top;
 }
 
-section#cart div.cart-items div.table-header p {
+div.table-header p {
   margin: 0.5em 0;
 }
 
-section#cart div.cart-items div.row-item > div {
+div.row-item > div {
   height: 80px;
 }
 
-section#cart div.cart-items div.table-header > div {
+div.table-header > div {
   text-align: center;
   color: #f60;
   font-size: 1.5em;
   text-transform: uppercase;
 }
 
-div.cart-items div.row-item div.cart-img-container {
+div.cart-img-container {
   text-align: center;
   vertical-align: middle;
   position: relative;
   width: 9%;
 }
 
-div.cart-items div.row-item div.cart-img-container img {
+div.cart-img-container img {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -383,20 +393,20 @@ div.cart-items div.row-item div.cart-img-container img {
   width: 40%;
 }
 
-div.cart-items div.row-item div.cart-description-container {
+div.cart-description-container {
   font-size: 0.9em;
   padding: 0.5em;
 }
 
-div.cart-items div.row-item div.cart-description-container p {
+div.cart-description-container p {
   margin: 0;
 }
 
-div.cart-items div.row-item div.cart-description-container p:first-child {
+div.cart-description-container p:first-child {
   font-weight: 700;
 }
 
-div.cart-items div.row-item div.cart-description-container p.promo-applied:not(:empty) {
+div.cart-description-container p.promo-applied:not(:empty) {
   margin: 0.5em 0;
   padding: 0.2em 0.5em;
   font-size: 0.9em;
@@ -405,115 +415,115 @@ div.cart-items div.row-item div.cart-description-container p.promo-applied:not(:
   display: inline-block;
 }
 
-div.cart-items div.row-item div.cart-description-container p.promo-applied:not(:empty):before {
+div.cart-description-container p.promo-applied:not(:empty):before {
   content: "OFFERS APPLIED: ";
   color: #f60;
 }
 
-div.cart-items div.row-item div.cart-description-container p.value-off span:before {
+div.cart-description-container p.value-off span:before {
   content: "$";
 }
 
-div.cart-items div.row-item div.cart-description-container p.value-off span:after {
+div.cart-description-container p.value-off span:after {
   content: " OFF!";
 }
 
-div.cart-items div.row-item div.cart-description-container p.percent-off span:after {
+div.cart-description-container p.percent-off span:after {
   content: "% OFF!";
 }
 
-div.cart-items div.row-item div.cart-qty-container {
+div.cart-qty-container {
   text-align: center;
   padding: 0.5em 0;
   width: 6%;
 }
 
-div.cart-items div.row-item div.cart-qty-container > * {
+div.cart-qty-container > * {
   display: block;
 }
 
-div.cart-items div.row-item div.cart-qty-container input[type="number"] {
+div.cart-qty-container input[type="number"] {
   font-size: 1.2em;
   width: 3.2em;
   margin: 0 auto 0.5em auto;
 }
 
-div.cart-items div.row-item div.cart-qty-container a {
+div.cart-qty-container a {
   text-decoration: none;
   color: #000;
   font-size: 0.8em;
 }
 
-div.cart-items div.row-item div.cart-price-offer-container,
-div.cart-items div.row-item div.cart-subtotal-container {
+div.cart-price-offer-container,
+div.cart-subtotal-container {
   padding: 0 0.5em;
   width: 20%;
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p,
-div.cart-items div.row-item div.cart-subtotal-container p {
+div.cart-price-offer-container p,
+div.cart-subtotal-container p {
   margin: 0;
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p.cart-price,
-div.cart-items div.row-item div.cart-subtotal-container p.cart-subtotal {
+div.cart-price-offer-container p.cart-price,
+div.cart-subtotal-container p.cart-subtotal {
   text-align: center;
   font-weight: 700;
   font-size: 1.2em;
   margin: 0.5em;
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p.cart-price:before,
-div.cart-items div.row-item div.cart-subtotal-container p.cart-subtotal:before {
+div.cart-price-offer-container p.cart-price:before,
+div.cart-subtotal-container p.cart-subtotal:before {
   content: "$";
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p.selling-price-if-offer:not(:empty) {
+div.cart-price-offer-container p.selling-price-if-offer:not(:empty) {
   font-size: 0.8em;
   color: #888;
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p.selling-price-if-offer:not(:empty):before {
+div.cart-price-offer-container p.selling-price-if-offer:not(:empty):before {
   content: "MSRP: $"
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p.offer-savings-if-offer:not(:empty) {
+div.cart-price-offer-container p.offer-savings-if-offer:not(:empty) {
   font-size: 0.8em;
   color: #f60;
 }
 
-div.cart-items div.row-item div.cart-price-offer-container p.offer-savings-if-offer:not(:empty):before {
+div.cart-price-offer-container p.offer-savings-if-offer:not(:empty):before {
   content: "Savings: $"
 }
 
-section#cart div.cart-items div.table-footer div.promo-code-text {
+div.table-footer div.promo-code-text {
   border-right: 0;
   text-align: right;
   position: relative;
 }
 
-div.cart-items div.table-footer div.promo-code-text,
-div.cart-items div.table-footer div.apply-promo-code {
+div.table-footer div.promo-code-text,
+div.table-footer div.apply-promo-code {
   padding: 1em 0.5em;
 }
 
-div.cart-items div.table-footer div.promo-code-text p {
+div.table-footer div.promo-code-text p {
   display: inline-block;
   margin: 0.2em 0;
   font-size: 0.9em;
 }
 
-div.cart-items div.table-footer div.promo-code-text div.promotions-list {
+div.table-footer div.promo-code-text div.promotions-list {
   margin: 0.2em 0;
   font-size: 0.9em;
 }
 
-div.cart-items div.table-footer div.apply-promo-code input {
+div.table-footer div.apply-promo-code input {
   font-size: 1.1em;
   text-align: center;
 }
 
-div.cart-items div.table-footer div.apply-promo-code input[type="button"] {
+div.table-footer div.apply-promo-code input[type="button"] {
   background-color: #f60;
   border: 0;
   padding: 0.2em;
@@ -521,39 +531,39 @@ div.cart-items div.table-footer div.apply-promo-code input[type="button"] {
   font-weight: 700;
 }
 
-div.cart-items div.table-footer div.apply-promo-code input[type="button"]:active {
+div.table-footer div.apply-promo-code input[type="button"]:active {
   background-color: #f30;
 }
 
-div.cart-items div.table-footer div.apply-promo-code input[type="button"]:focus {
+div.table-footer div.apply-promo-code input[type="button"]:focus {
   outline: none;
 }
 
-div.cart-items div.table-footer div.apply-promo-code div.error {
+div.table-footer div.apply-promo-code div.error {
   font-size: 0.8em;
   color: #e74c3c;
 }
 
-div.cart-items div.table-footer div.total-savings,
-div.cart-items div.table-footer div.estimated-total {
+div.table-footer div.total-savings,
+div.table-footer div.estimated-total {
   text-align: center;
   font-size: 1.2em;
   font-weight: 700;
 }
 
-div.cart-items div.table-footer div.total-savings p {
+div.table-footer div.total-savings p {
   color: #f60;
 }
 
-div.cart-items div.table-footer div.total-savings p:before {
+div.table-footer div.total-savings p:before {
   content: "Total Savings: $";
 }
 
-div.cart-items div.table-footer div.estimated-total p:before {
+div.table-footer div.estimated-total p:before {
   content: "Estimated Total: $"
 }
 
-section#cart div.cart-buttons-container {
+div.cart-buttons-container {
   text-align: right;
   padding-right: 1em;
 }
@@ -570,19 +580,19 @@ div.cart-buttons-container input[type="button"]:focus {
   outline: none;
 }
 
-div.cart-buttons-container input#shop-more {
+input#shop-more {
   background-color: #95a5a6;
 }
 
-div.cart-buttons-container input#shop-more:active {
+input#shop-more:active {
   background-color: #778484;
 }
 
-div.cart-buttons-container input#checkout {
+input#checkout {
   background-color: #f60;
 }
 
-div.cart-buttons-container input#checkout:active {
+input#checkout:active {
   background-color: #f30;
 }
 
@@ -614,8 +624,9 @@ section#cart div#cart-row-template {
 
 ul#promotions-tooltip {
   position: absolute;
+  margin: 0;
   left: 8.5em;
-  top: 1em;
+  top: 0;
   text-align: left;
   font-size: 0.85em;
   background-color: rgba(255,255,255, 0.9);

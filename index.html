@@ -76,19 +76,19 @@
     <h2>My Cart</h2>
     <div id="cart-items" class="container cart-items">
         <div class="table-header">
-            <div class="cart-img-container">
+            <div class="">
                 <p><i class="fa fa-picture-o"></i></p>
             </div>
-            <div class="cart-description-container">
+            <div class="">
                 <p>Item</p>
             </div>
-            <div class="cart-qty-container">
+            <div class="">
                 <p>Qty</p>
             </div>
-            <div class="cart-price-offer-container">
+            <div class="">
                 <p>Price</p>
             </div>
-            <div class="cart-subtotal-container">
+            <div class="">
                 <p>Subtotal</p>
             </div>
         </div>
@@ -122,7 +122,8 @@
             <div class="apply-promo-code">
                 <input type="text" placeholder="Enter Promo Code Here" id="promo-code" name="promo-code" list="promos"/>
                 <input type="button" value="Apply" id="apply-promo-code" name="apply-promo-code"/>
-                <div class="error" id="invalid-promo"></div>
+                <div id="applied-promo-msg"></div>
+                <div class="error" id="invalid-promo-msg"></div>
                 <datalist id="promos"></datalist>
             </div>
             <div class="blank-qty-footer"></div>

@@ -229,14 +229,21 @@
         break;
       }
     }
+    promotion.value = '';
 
     if (promoId && (promoId in promotionsData)) {
-      document.getElementById('invalid-promo').innerText = '';
-      cart.applyPromotionCode(promoId);
-      updateCartRows();
-      updateCartAndCartSummary();
+      var appliedPromMsg = document.getElementById('applied-promo-msg');
+      document.getElementById('invalid-promo-msg').innerText = '';
+      if (cart.applyPromotionCode(promoId)) {
+        updateCartRows();
+        updateCartAndCartSummary();
+        appliedPromMsg.innerText = 'Promocode Applied: ' + promotionsData[promoId].code;
+      } else {
+        appliedPromMsg.innerText = appliedPromMsg.innerText.replace('Promocode Applied:',
+            'You already have better savings with');
+      }
     } else {
-      document.getElementById('invalid-promo').innerText = 'Please use a valid promocode.';
+      document.getElementById('invalid-promo-msg').innerText = 'Please use a valid promocode.';
     }
   };
 

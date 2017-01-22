@@ -169,6 +169,7 @@ var Cart = (function () {
         this.items = JSON.parse(JSON.stringify(compared.cartItemsCopy));
         updateCartTotals();
       }
+      return compared.isCheaper;
     };
   }
 
